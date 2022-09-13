@@ -1,59 +1,39 @@
 package com.example.movie_theater.security;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConf extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+                .dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, enabled from employee where username=?")
+                .authoritiesByUsernameQuery("select username, role from employee where username=?")
+        ;
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http
-                .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/").authenticated()
-                .antMatchers(HttpMethod.GET, "/ping").permitAll()
-//                .antMatchers(HttpMethod.GET, "/cocktails/**").permitAll()
-                .antMatchers(HttpMethod.GET).authenticated()
-                .antMatchers(HttpMethod.PUT).authenticated()
-                .antMatchers(HttpMethod.DELETE).authenticated()
+        http.authorizeRequests()
+                .anyRequest().authenticated()
                 .and()
-                .cors()
+                .formLogin().permitAll()
                 .and()
-                .formLogin()
-                .and()
-                .logout().logoutUrl("/logout").permitAll()
-                .and()
-                .csrf().disable()
-                .httpBasic();
+                .logout().permitAll();
     }
-
-  /*@Bean
-  public AuthenticationProvider getProvider() {
-    AuthProvider provider = new AuthProvider(userDetailsService);
-    return provider;
-  }
-  private class AuthentificationLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest request,
-                                        HttpServletResponse response, Authentication authentication)
-        throws IOException, ServletException {
-      response.setStatus(HttpServletResponse.SC_OK);
-    }
-  }
-  private class AuthentificationLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
-    @Override
-    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
-                                Authentication authentication)
-        throws IOException, ServletException {
-      response.setStatus(HttpServletResponse.SC_OK);
-    }
-  }*/
-
 }

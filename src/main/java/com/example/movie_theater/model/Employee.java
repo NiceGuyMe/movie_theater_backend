@@ -28,6 +28,12 @@ public class Employee implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "role", nullable = false)
+    private String role;
+
+    @Column(name = "enabled", nullable = false)
+    private int enabled;
+
 
     @Override
     public int hashCode() {
