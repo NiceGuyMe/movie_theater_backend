@@ -25,8 +25,8 @@ public class AuditoriumController {
     }
 
     @PutMapping("auditoriums/")
-    public List<Auditorium> createOrUpdateAuditorium(@RequestBody List<Auditorium> auditorium) {
-        return auditoriumService.saveAll(auditorium);
+    public Auditorium createOrUpdateAuditorium(@RequestBody Auditorium auditorium) {
+        return auditoriumService.save(auditorium);
     }
 
     @DeleteMapping("auditoriums/{auditoriumId}")

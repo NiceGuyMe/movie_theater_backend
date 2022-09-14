@@ -19,9 +19,10 @@ public class AuditoriumService {
         return auditoriumRepository.findAll();
     }
 
-    public List<Auditorium> saveAll(List<Auditorium>  auditoriums) {
-        return auditoriumRepository.saveAll(auditoriums);
+    public Auditorium save(Auditorium auditoriums) {
+        return auditoriumRepository.save(auditoriums);
     }
+
 
     public Optional<Auditorium> getById(int auditoriumId) {
         return auditoriumRepository.findById(auditoriumId);
