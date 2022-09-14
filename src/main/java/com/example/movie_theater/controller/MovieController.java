@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class MovieController {
     private final MovieService movieService;

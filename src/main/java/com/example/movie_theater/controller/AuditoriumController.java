@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class AuditoriumController {
 
     private final AuditoriumService auditoriumService;
-
     @GetMapping("auditoriums/{auditoriumId}")
     public Optional<Auditorium> getAuditoriumByID(@PathVariable("auditoriumId") int auditoriumId) {
         return auditoriumService.getById(auditoriumId);

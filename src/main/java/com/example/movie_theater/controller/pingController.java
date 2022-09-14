@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class pingController {
     @GetMapping("/ping")
     public  String pong(){

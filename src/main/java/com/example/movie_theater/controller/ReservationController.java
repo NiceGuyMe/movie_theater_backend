@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ReservationController {
 
     private final ReservationService reservationService;

@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SeatController {
     private final SeatService seatService;
     @GetMapping("seats/")
