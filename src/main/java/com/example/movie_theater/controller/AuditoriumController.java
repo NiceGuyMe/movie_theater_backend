@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*")
 @RestController
 public class AuditoriumController {
 

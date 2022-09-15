@@ -17,7 +17,6 @@ import java.util.Objects;
 @Table(name = "seat")
 public class Seat  implements Serializable{
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
@@ -29,8 +28,9 @@ public class Seat  implements Serializable{
     @Column(name = "number", nullable = false)
     private int number;
 
-    @Column(name = "auditorium_id", nullable = false)
-    private int auditoriumId;
+   @ManyToOne
+   @JoinColumn(name = "auditorium_id")
+   private Auditorium auditorium;
 
     @Override
     public int hashCode() {

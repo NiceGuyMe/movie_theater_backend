@@ -21,23 +21,27 @@ public class Reservation implements Serializable {
     @Column(columnDefinition = "serial")
     private int id;
 
-    @Column(name = "screening_id", nullable = false)
-    private int screeningId;
+    @ManyToOne
+    @JoinColumn(name = "screening_id")
+    private Screening screening_id;
 
-    @Column(name = "employee_reserved_id")
-    private int employeeReservedId;
+    @ManyToOne
+    @JoinColumn(name = "employee_reserved_id")
+    private Employee employee_reserved_id;
 
-    @Column(name = "reservation_type_id")
-    private int reservationTypeId;
+    @ManyToOne
+    @JoinColumn(name = "reservation_type_id")
+    private ReservationType reservation_type_id;
 
     @Column(name = "reservation_contact", nullable = false)
-    private String reservationContact;
+    private String reservation_contact;
 
     @Column(name = "reserved")
     private Boolean reserved;
 
-    @Column(name = "employee_paid_id")
-    private int employeePaidId;
+    @ManyToOne
+    @JoinColumn(name = "employee_paid_paid_id")
+    private Employee employee_paid_paid_id;
 
     @Column(name = "paid")
     private Boolean paid;

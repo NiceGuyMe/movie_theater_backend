@@ -1,0 +1,10 @@
+insert into employee (username, password, role, enabled) values ('msture0', 'iE7GZaYD', 'Surveyor', 1);
+insert into employee (username, password, role, enabled) values ('imacdiarmid1', 'jgyxvPW', 'Estimator', 0);
+insert into employee (username, password, role, enabled) values ('bbaudy2', 'vsoEDWI6h', 'Construction Foreman', 0);
+insert into employee (username, password, role, enabled) values ('kparsley3', 'hcYoFE', 'Surveyor', 0);
+insert into employee (username, password, role, enabled) values ('agiannotti4', 'UhY4F7yO', 'Electrician', 0);
+insert into employee (username, password, role, enabled) values ('sraubheim5', 'sTKBuGpb', 'Construction Expeditor', 0);
+insert into employee (username, password, role, enabled) values ('lleake6', 'hxyLBGx45ZPE', 'Electrician', 1);
+insert into employee (username, password, role, enabled) values ('svaan7', 'i0n69HLg1xg3', 'Construction Expeditor', 0);
+insert into employee (username, password, role, enabled) values ('adomotor8', 'SdKM5Zg', 'Supervisor', 0);
+insert into employee (username, password, role, enabled) values ('amacdonald9', 'vW6oCsiuR', 'Estimator', 0);

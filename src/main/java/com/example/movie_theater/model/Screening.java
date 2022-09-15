@@ -22,11 +22,13 @@ public class Screening implements Serializable{
     @Column(columnDefinition = "serial")
     private int id;
 
-    @Column(name = "movie_id", nullable = false)
-    private int movieId;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 
-    @Column(name = "auditorium_id", nullable = false)
-    private int auditoriumId;
+   @ManyToOne
+   @JoinColumn(name = "auditorium_id")
+   private Auditorium auditorium;
 
     @Column(name = "screening_start", nullable = false)
     private Date screeningStart;

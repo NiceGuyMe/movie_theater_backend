@@ -23,7 +23,7 @@ public class ReservationType implements Serializable{
     private int id;
 
     @Column(name = "reservation_type", nullable = false)
-    private String reservationType;
+    private String reservation_type;
 
     @Override
     public int hashCode() {

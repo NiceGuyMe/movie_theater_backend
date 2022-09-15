@@ -16,22 +16,22 @@ import java.util.Objects;
 @Entity
 @Table(name = "seat_reserved")
 public class SeatReserved implements Serializable{
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
     private int id;
 
-    @Column(name = "seat_id", nullable = false)
-    private int seatId;
+   @ManyToOne
+   @JoinColumn(name = "seat_id")
+   private Seat seat_id;
 
-    @Column(name = "reservation_id", nullable = false)
-    private int reservationId;
+   @ManyToOne
+   @JoinColumn(name = "reservation_id")
+   private Reservation reservation_id;
 
-    @Column(name = "screening_id", nullable = false)
-    private int screeningId;
+    @ManyToOne
+    @JoinColumn(name = "screening_id")
+    private Screening screening_id;
 
     @Override
     public int hashCode() {
