@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +16,8 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "reservation")
+@SQLDelete(sql = "update article set deleted=true where id=?")
+@Where(clause = "deleted = false")
 public class Reservation implements Serializable {
 
     @Id
@@ -21,15 +25,15 @@ public class Reservation implements Serializable {
     @Column(columnDefinition = "serial")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "screening_id")
     private Screening screening_id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "employee_reserved_id")
     private Employee employee_reserved_id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "reservation_type_id")
     private ReservationType reservation_type_id;
 
@@ -39,7 +43,7 @@ public class Reservation implements Serializable {
     @Column(name = "reserved")
     private Boolean reserved;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "employee_paid_paid_id")
     private Employee employee_paid_paid_id;
 

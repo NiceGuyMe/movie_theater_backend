@@ -4,6 +4,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +17,8 @@ import java.io.Serializable;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@SQLDelete(sql = "update article set deleted=true where id=?")
+@Where(clause = "deleted = false")
 @Table(name = "auditorium")
 public class Auditorium implements Serializable {
 

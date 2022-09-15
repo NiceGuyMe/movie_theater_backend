@@ -2,6 +2,8 @@ package com.example.movie_theater.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -15,6 +17,8 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "seat")
+@SQLDelete(sql = "update article set deleted=true where id=?")
+@Where(clause = "deleted = false")
 public class Seat  implements Serializable{
 
     @Id
@@ -28,7 +32,7 @@ public class Seat  implements Serializable{
     @Column(name = "number", nullable = false)
     private int number;
 
-   @ManyToOne
+   @ManyToOne(cascade=CascadeType.ALL)
    @JoinColumn(name = "auditorium_id")
    private Auditorium auditorium;
 

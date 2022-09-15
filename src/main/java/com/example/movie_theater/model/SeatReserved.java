@@ -2,6 +2,8 @@ package com.example.movie_theater.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -21,15 +23,15 @@ public class SeatReserved implements Serializable{
     @Column(columnDefinition = "serial")
     private int id;
 
-   @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
    @JoinColumn(name = "seat_id")
    private Seat seat_id;
 
-   @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
    @JoinColumn(name = "reservation_id")
    private Reservation reservation_id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "screening_id")
     private Screening screening_id;
 
