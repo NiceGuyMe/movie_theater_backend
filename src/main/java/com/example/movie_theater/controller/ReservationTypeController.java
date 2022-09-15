@@ -29,7 +29,7 @@ public class ReservationTypeController {
     }
 
     @PutMapping("reservationTypes/")
-    public List<ReservationType>  createOrUpdateReservationTypes(@RequestBody List<ReservationType>  reservationType){
+    public ReservationType createOrUpdateReservationTypes(@RequestBody ReservationType reservationType){
         return reservationTypeService.save(reservationType);
     }
 }

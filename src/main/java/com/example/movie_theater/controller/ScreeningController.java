@@ -33,7 +33,7 @@ public class ScreeningController {
     }
 
     @PutMapping("screenings/")
-    public List<Screening> createOrUpdateScreenings(@RequestBody List<Screening> screening){
+    public Screening createOrUpdateScreenings(@RequestBody Screening screening){
         return screeningService.save(screening);
     }
 }

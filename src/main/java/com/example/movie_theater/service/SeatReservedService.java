@@ -27,7 +27,7 @@ public class SeatReservedService {
         seatReservedRepository.deleteById(seat);
     }
 
-    public List<SeatReserved> save(List<SeatReserved> seatReserved) {
-        return seatReservedRepository.saveAll(seatReserved);
+    public SeatReserved save(SeatReserved seatReserved) {
+        return seatReservedRepository.save(seatReserved);
     }
 }

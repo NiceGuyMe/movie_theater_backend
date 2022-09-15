@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -16,8 +18,6 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "reservation")
-@SQLDelete(sql = "update article set deleted=true where id=?")
-@Where(clause = "deleted = false")
 public class Reservation implements Serializable {
 
     @Id
@@ -27,13 +27,16 @@ public class Reservation implements Serializable {
 
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "screening_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Screening screening_id;
 
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "employee_reserved_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Employee employee_reserved_id;
 
     @ManyToOne(cascade=CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "reservation_type_id")
     private ReservationType reservation_type_id;
 

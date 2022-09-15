@@ -27,8 +27,8 @@ public class ReservationService {
         reservationRepository.deleteById(reservation);
     }
 
-    public List<Reservation> save(List<Reservation> reservation) {
-        return reservationRepository.saveAll(reservation);
+    public Reservation save(Reservation reservation) {
+        return reservationRepository.save(reservation);
     }
 
 }

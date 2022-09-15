@@ -29,7 +29,6 @@ public class AuditoriumService {
     }
 
     public void delete(int auditoriumId){
-        Optional<Auditorium> auditorium = auditoriumRepository.findById(auditoriumId);
-
+         auditoriumRepository.deleteById(auditoriumId);
     }
 }

@@ -19,8 +19,8 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public List<Employee> save(List<Employee> employee) {
-        return employeeRepository.saveAll(employee);
+    public Employee save(Employee employee) {
+        return employeeRepository.save(employee);
     }
 
     public Optional<Employee> getById(int employeeId) {

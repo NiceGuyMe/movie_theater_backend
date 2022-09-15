@@ -17,8 +17,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "reservation_type")
-@SQLDelete(sql = "update article set deleted=true where id=?")
-@Where(clause = "deleted = false")
 public class ReservationType implements Serializable{
 
     @Id

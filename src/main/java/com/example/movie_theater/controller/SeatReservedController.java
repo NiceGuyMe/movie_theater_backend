@@ -29,7 +29,7 @@ public class SeatReservedController {
     }
 
     @PutMapping("seatReserveds/")
-    public List<SeatReserved> createOrUpdateSeatReserved(@RequestBody List<SeatReserved> seatReserved){
+    public SeatReserved createOrUpdateSeatReserved(@RequestBody SeatReserved seatReserved){
         return seatReservedService.save(seatReserved);
     }
 }

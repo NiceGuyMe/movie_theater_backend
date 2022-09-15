@@ -23,8 +23,8 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public List<Movie> save(List<Movie> movie) {
-        return movieRepository.saveAll(movie);
+    public Movie save(Movie movie) {
+        return movieRepository.save(movie);
     }
 
     public void delete(int movie){

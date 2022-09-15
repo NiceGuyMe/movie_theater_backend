@@ -27,8 +27,8 @@ public class ScreeningService {
         screeningRepository.deleteById(screening);
     }
 
-    public List<Screening>  save(List<Screening>  screening) {
-        return screeningRepository.saveAll(screening);
+    public Screening  save(Screening screening) {
+        return screeningRepository.save(screening);
     }
 
 

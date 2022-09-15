@@ -28,7 +28,7 @@ public class SeatController {
     }
 
     @PutMapping("seats/")
-    public List<Seat> createOrUpdateSeats(@RequestBody List<Seat> seat){
+    public Seat createOrUpdateSeats(@RequestBody Seat seat){
         return seatService.save(seat);
     }
 }

@@ -32,7 +32,7 @@ public class EmployeeController {
     }
 
     @PutMapping("employees/")
-    public List<Employee> createOrUpdateEmployee(@RequestBody List<Employee> employee){
+    public Employee createOrUpdateEmployee(@RequestBody Employee employee){
         return employeeService.save(employee);
     }
 }

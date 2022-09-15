@@ -17,8 +17,6 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "employee")
-@SQLDelete(sql = "update article set deleted=true where id=?")
-@Where(clause = "deleted = false")
 public class Employee implements Serializable {
 
     @Id

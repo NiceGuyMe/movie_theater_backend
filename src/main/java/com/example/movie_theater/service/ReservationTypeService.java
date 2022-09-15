@@ -26,7 +26,7 @@ public class ReservationTypeService {
         reservationTypeRepository.deleteById(reservationType);
     }
 
-    public List<ReservationType> save(List<ReservationType> reservationType) {
-        return reservationTypeRepository.saveAll(reservationType);
+    public ReservationType save(ReservationType reservationType) {
+        return reservationTypeRepository.save(reservationType);
     }
 }

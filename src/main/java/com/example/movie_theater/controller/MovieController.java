@@ -31,7 +31,7 @@ public class MovieController {
     }
 
     @PutMapping("movies/")
-    public List<Movie> createOrUpdateMovie(@RequestBody List<Movie> movie) {
+    public Movie createOrUpdateMovie(@RequestBody Movie movie) {
         return movieService.save(movie);
     }
 

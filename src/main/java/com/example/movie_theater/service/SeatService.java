@@ -25,7 +25,7 @@ public class SeatService {
         seatRepository.deleteById(seat);
     }
 
-    public List<Seat> save(List<Seat> seat) {
-        return seatRepository.saveAll(seat);
+    public Seat save(Seat seat) {
+        return seatRepository.save(seat);
     }
 }

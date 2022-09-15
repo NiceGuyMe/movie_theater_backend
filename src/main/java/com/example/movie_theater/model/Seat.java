@@ -2,6 +2,8 @@ package com.example.movie_theater.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -17,8 +19,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "seat")
-@SQLDelete(sql = "update article set deleted=true where id=?")
-@Where(clause = "deleted = false")
 public class Seat  implements Serializable{
 
     @Id
@@ -32,9 +32,10 @@ public class Seat  implements Serializable{
     @Column(name = "number", nullable = false)
     private int number;
 
-   @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
    @JoinColumn(name = "auditorium_id")
-   private Auditorium auditorium;
+    private Auditorium auditorium;
 
     @Override
     public int hashCode() {
